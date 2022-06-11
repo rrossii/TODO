@@ -7,9 +7,13 @@
 #include <QString>
 
 class ToDoItem {
+public:
+    ToDoItem() = delete;
+    ToDoItem(QString name);
+    QString getTaskName() const;
 private:
-    bool done= false;
-    QString task;
+    QString taskName;
+    bool done = false;
 };
 
 

@@ -19,8 +19,9 @@ private:
     ToDoModel *model;
     mainwindow *view;
 
-public slots:
+private slots:
     void addNewTask();
+    void onModelUpdated();
 };
 
 

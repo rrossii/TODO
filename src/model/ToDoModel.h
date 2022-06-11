@@ -5,10 +5,21 @@
 #ifndef TODOLISTPROBE_TODOMODEL_H
 #define TODOLISTPROBE_TODOMODEL_H
 #include "ToDoItem.h"
-#include <QList>
+#include <QObject>
+#include <QVector>
 
-class ToDoModel {
-    QList <ToDoItem> tasks;
+class ToDoModel : public QObject{
+    Q_OBJECT
+public:
+    void AddTask(QString name);
+    const std::vector<ToDoItem>& getTasks() const;
+signals:
+    void onModelUpdated();
+
+private:
+    std::vector <ToDoItem> tasks;
+
+
 };
 
 

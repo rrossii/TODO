@@ -3,3 +3,9 @@
 //
 
 #include "ToDoItem.h"
+
+ToDoItem::ToDoItem(QString name) : taskName(name) {}
+
+QString ToDoItem::getTaskName() const {
+    return taskName;
+}
