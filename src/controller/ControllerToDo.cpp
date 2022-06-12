@@ -3,6 +3,7 @@
 #include <QLineEdit>
 #include <QListWidget>
 #include <QPushButton>
+#include <QDialog>
 #include <QString>
 #include <QDebug>
 
@@ -17,14 +18,26 @@ ControllerToDo::ControllerToDo() {
     view->show();
 }
 void ControllerToDo::addNewTask() {
+    dialog_adding_window = new dialogaddingwindow;
 
-    QString added_task = view->getUI()->task->text();
-    model->AddTask(added_task); // нові дані у модель
+    connect(dialog_adding_window->getUI()->cancel_button, &QPushButton::clicked, this, &ControllerToDo::closeWindow);
+    connect(dialog_adding_window->getUI()->add_button, &QPushButton::clicked, this, [this]() {
+        QString added_task = dialog_adding_window->getUI()->lineEdit->text();
+        model->AddTask(added_task);
+        dialog_adding_window->close();
+    });
+    dialog_adding_window->show();
+
 }
 
 void ControllerToDo::onModelUpdated() { // відмальовує новий вью
     view->getUI()->tasks->clear();
+
     for (auto &el : model->getTasks()) {
         view->getUI()->tasks->addItem(el.getTaskName());
     }
+}
+
+void ControllerToDo::closeWindow() {
+    dialog_adding_window->close();
 }
