@@ -14,13 +14,17 @@ public:
 
 private:
     ToDoModel *model;
-    mainwindow *view;
+    mainwindow *main_window;
     dialogaddingwindow *dialog_adding_window;
 
 private slots:
     void addNewTask();
     void onModelUpdated();
     void closeWindow();
+    void completeTask();
+    void crossOutTask();
+    signals:
+    void taskHasCompleted(QListWidgetItem *task_item);
 };
 
 #endif //TODOLISTPROBE_CONTROLLERTODO_H

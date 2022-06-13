@@ -55,7 +55,7 @@
     <item row="0" column="0">
      <widget class="QLabel" name="label">
       <property name="text">
-       <string>Adding new task</string>
+       <string>Adding new task_name</string>
       </property>
      </widget>
     </item>

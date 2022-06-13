@@ -13,14 +13,12 @@ class ToDoModel : public QObject{
 public:
     void AddTask(QString name);
     const std::vector<ToDoItem>& getTasks() const;
+    void CompleteTask(int index);
 signals:
     void onModelUpdated();
 
 private:
-    std::vector <ToDoItem> tasks;
-
-
+    std::vector<ToDoItem> tasks;
 };
-
 
 #endif //TODOLISTPROBE_TODOMODEL_H

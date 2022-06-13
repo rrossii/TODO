@@ -13,3 +13,8 @@ void ToDoModel::AddTask(QString name) {
 const std::vector<ToDoItem> &ToDoModel::getTasks() const {
     return tasks;
 }
+
+void ToDoModel::CompleteTask(int index) {
+    tasks[index].Complete();
+    emit onModelUpdated();
+}

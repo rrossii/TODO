@@ -1,7 +1,3 @@
-//
-// Created by rossii on 10.06.22.
-//
-
 #ifndef TODOLISTPROBE_TODOITEM_H
 #define TODOLISTPROBE_TODOITEM_H
 #include <QString>
@@ -11,6 +7,12 @@ public:
     ToDoItem() = delete;
     ToDoItem(QString name);
     QString getTaskName() const;
+    void Complete(){
+        done = true;
+    };
+    bool isComplete() const {
+        return done;
+    }
 private:
     QString taskName;
     bool done = false;

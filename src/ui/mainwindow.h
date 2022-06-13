@@ -1,6 +1,3 @@
-//
-// Created by rossii on 10.06.22.
-//
 
 #ifndef TODOLISTPROBE_MAINWINDOW_H
 #define TODOLISTPROBE_MAINWINDOW_H
