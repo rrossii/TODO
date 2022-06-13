@@ -7,14 +7,14 @@
 void ToDoModel::AddTask(QString name) {
     ToDoItem x = ToDoItem(name);
     tasks.push_back(x);
-    emit onModelUpdated();  // викликати(відправити) сигнал
-}
-
-const std::vector<ToDoItem> &ToDoModel::getTasks() const {
-    return tasks;
+    emit onModelUpdated();
 }
 
 void ToDoModel::CompleteTask(int index) {
     tasks[index].Complete();
     emit onModelUpdated();
+}
+
+const std::vector<ToDoItem> &ToDoModel::getTasks() const {
+    return tasks;
 }

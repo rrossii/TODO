@@ -9,7 +9,7 @@
 #include <QListWidget>
 
 mainwindow::mainwindow(QWidget *parent) :
-        QWidget(parent), ui(new Ui::mainwindow) {
+        QMainWindow(parent), ui(new Ui::mainwindow) {
     ui->setupUi(this);
     
 }

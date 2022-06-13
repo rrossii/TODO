@@ -3,10 +3,11 @@
 #define TODOLISTPROBE_MAINWINDOW_H
 
 #include <QWidget>
+#include <QMainWindow>
 #include "ui_mainwindow.h" // -> mainwindow.ui
 
 
-class mainwindow : public QWidget {
+class mainwindow : public QMainWindow { // changed from QWidget
 Q_OBJECT
 
 public:

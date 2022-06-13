@@ -1,9 +1,6 @@
 #include "ControllerToDo.h"
 #include <QListWidget>
 #include <QPushButton>
-#include <QCheckBox>
-#include <QHBoxLayout>
-#include <QLabel>
 #include <QString>
 #include <QDebug>
 #include <QFont>
@@ -14,14 +11,7 @@ ControllerToDo::ControllerToDo() {
     connect(main_window->getUI()->add_task, &QPushButton::clicked, this, &ControllerToDo::addNewTask);
 
     connect(main_window->getUI()->complete_task, &QPushButton::clicked, this, &ControllerToDo::completeTask);
-    //connect(main_window->getUI()->tasks, &QListWidget::itemClicked, this, &ControllerToDo::selectTask);
 
-//    connect(this, &ControllerToDo::taskHasCompleted, main_window->getUI()->tasks, [this](){
-//        QFont *font = new QFont;
-//        font->setBold(true);
-//        font->setStrikeOut(true);
-//        task_item->setFont(*font);
-//    })
     connect(model, &ToDoModel::onModelUpdated,
         this, &ControllerToDo::onModelUpdated);
 
@@ -47,7 +37,7 @@ void ControllerToDo::onModelUpdated() { // відмальовує новий в�
     main_window->getUI()->tasks->clear();
 
     for (auto &el : model->getTasks()) {
-        auto item = new QListWidgetItem(el.getTaskName() + QString::fromStdString(el.isComplete() ? " [Complete]" : ""));
+        auto item = new QListWidgetItem(el.getTaskName() + QString::fromStdString(el.isComplete() ? " [Completed]" : ""));
         main_window->getUI()->tasks->addItem(item);
     }
 }
@@ -55,7 +45,6 @@ void ControllerToDo::onModelUpdated() { // відмальовує новий в�
 void ControllerToDo::closeWindow() {
     dialog_adding_window->close();
 }
-
 
 void ControllerToDo::completeTask() {
     if (!main_window->getUI()->tasks->selectedItems().empty()) {
@@ -72,13 +61,11 @@ void ControllerToDo::completeTask() {
     }
 }
 
-void ControllerToDo::crossOutTask() {
-
+QString ControllerToDo::setCrossOutTask(ToDoItem item) const {
+    if (item.isComplete()) {
+        auto *font = new QFont;
+        font->setBold(true);
+        font->setStrikeOut(true);
+        return font->toString();
+    } else return "";
 }
-
-//    connect(main_window->getUI()->complete_task, &QPushButton::clicked, this, [&task_item](){
-//        QFont *font = new QFont;
-//        font->setBold(true);
-//        font->setStrikeOut(true);
-//        task_item->setFont(*font);
-//    });

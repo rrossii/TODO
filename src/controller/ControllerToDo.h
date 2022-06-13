@@ -6,11 +6,13 @@
 #include <model/ToDoModel.h>
 #include <ui/mainwindow.h>
 #include <ui/dialogaddingwindow.h>
+#include <model/ToDoItem.h>
 
 class ControllerToDo : public QWindow {
     Q_OBJECT
 public:
     ControllerToDo();
+    QString setCrossOutTask(ToDoItem item) const;
 
 private:
     ToDoModel *model;
@@ -22,7 +24,6 @@ private slots:
     void onModelUpdated();
     void closeWindow();
     void completeTask();
-    void crossOutTask();
     signals:
     void taskHasCompleted(QListWidgetItem *task_item);
 };
