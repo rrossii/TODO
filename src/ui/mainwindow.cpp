@@ -1,17 +1,20 @@
-//
-// Created by rossii on 10.06.22.
-//
-
-// You may need to build the project (run Qt uic code generator) to get "ui_mainwindow.h" resolved
-
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QListWidget>
 
 mainwindow::mainwindow(QWidget *parent) :
         QMainWindow(parent), ui(new Ui::mainwindow) {
     ui->setupUi(this);
-    
+
+    QMenu *file;
+    quit = new QAction("&Quit", this);
+    new_file = new QAction("&New", this);
+    quit->setShortcut(tr("Ctrl+Q"));
+    new_file->setShortcut(tr("Ctrl+N"));
+
+    file = menuBar()->addMenu("&File");
+    file->addAction(quit);
+    file->addAction(new_file);
+
 }
 
 mainwindow::~mainwindow() {
@@ -20,4 +23,12 @@ mainwindow::~mainwindow() {
 
 Ui::mainwindow* mainwindow::getUI() {
     return ui;
+}
+
+QAction *mainwindow::getQuitAction() {
+    return quit;
+}
+
+QAction *mainwindow::getNewFileAction() {
+    return new_file;
 }

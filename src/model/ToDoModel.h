@@ -13,6 +13,7 @@ class ToDoModel : public QObject{
 public:
     void AddTask(QString name);
     void CompleteTask(int index);
+    void Clear();
     const std::vector<ToDoItem>& getTasks() const;
 signals:
     void onModelUpdated();

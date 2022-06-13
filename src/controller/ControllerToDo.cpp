@@ -8,6 +8,12 @@
 ControllerToDo::ControllerToDo() {
     model = new ToDoModel;
     main_window = new mainwindow;
+
+    connect(main_window->getQuitAction(), &QAction::triggered, qApp, QApplication::quit);
+    connect(main_window->getNewFileAction(), &QAction::triggered, this, [this](){
+        model->Clear();
+    });
+
     connect(main_window->getUI()->add_task, &QPushButton::clicked, this, &ControllerToDo::addNewTask);
 
     connect(main_window->getUI()->complete_task, &QPushButton::clicked, this, &ControllerToDo::completeTask);
@@ -37,7 +43,12 @@ void ControllerToDo::onModelUpdated() { // відмальовує новий в�
     main_window->getUI()->tasks->clear();
 
     for (auto &el : model->getTasks()) {
-        auto item = new QListWidgetItem(el.getTaskName() + QString::fromStdString(el.isComplete() ? " [Completed]" : ""));
+        auto item = new QListWidgetItem(el.getTaskName());
+        if (el.isComplete()) {
+            QFont font;
+            font.setStrikeOut(true);
+            item->setFont(font);
+        }
         main_window->getUI()->tasks->addItem(item);
     }
 }

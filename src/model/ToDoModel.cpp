@@ -18,3 +18,8 @@ void ToDoModel::CompleteTask(int index) {
 const std::vector<ToDoItem> &ToDoModel::getTasks() const {
     return tasks;
 }
+
+void ToDoModel::Clear() {
+    tasks.clear();
+    emit onModelUpdated();
+}

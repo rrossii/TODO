@@ -4,6 +4,9 @@
 
 #include <QWidget>
 #include <QMainWindow>
+#include <QAction>
+#include <QMenu>
+#include <QMenuBar>
 #include "ui_mainwindow.h" // -> mainwindow.ui
 
 
@@ -13,11 +16,14 @@ Q_OBJECT
 public:
     explicit mainwindow(QWidget *parent = nullptr);
     Ui::mainwindow* getUI();
+    QAction* getQuitAction();
+    QAction* getNewFileAction();
 
     ~mainwindow() override;
 
 private:
     Ui::mainwindow *ui;
+    QAction *quit, *new_file;
 };
 
 
