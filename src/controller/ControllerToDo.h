@@ -6,6 +6,7 @@
 #include <model/ToDoModel.h>
 #include <ui/mainwindow.h>
 #include <ui/dialogaddingwindow.h>
+#include <ui/infodialogwindow.h>
 #include <model/ToDoItem.h>
 
 class ControllerToDo : public QWindow {

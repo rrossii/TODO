@@ -30,7 +30,7 @@ add_executable(todolistPROBE main.cpp
 #        src/ui/viewitem.cpp
 #        src/ui/viewitem.h
 #        src/ui/viewitem.ui
-        )
+        src/ui/infodialogwindow.cpp src/ui/infodialogwindow.h src/ui/infodialogwindow.ui)
 
 target_link_libraries(todolistPROBE
         Qt5::Core

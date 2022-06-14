@@ -18,12 +18,13 @@ public:
     Ui::mainwindow* getUI();
     QAction* getQuitAction();
     QAction* getNewFileAction();
+    QAction* getAboutAction();
 
     ~mainwindow() override;
 
 private:
     Ui::mainwindow *ui;
-    QAction *quit, *new_file;
+    QAction *quit, *new_file, *about_program;;
 };
 
 

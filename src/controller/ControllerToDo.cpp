@@ -13,6 +13,12 @@ ControllerToDo::ControllerToDo() {
     connect(main_window->getNewFileAction(), &QAction::triggered, this, [this](){
         model->Clear();
     });
+    connect(main_window->getAboutAction(), &QAction::triggered, this, [this]() {
+        auto about_dialog_window = new infodialogwindow;
+        about_dialog_window->getUI()->info_label->setText("To Do List is used for everyday planning your tasks.\n"
+                                                          "This program was written in QT5 by Klym Rosana");
+        about_dialog_window->show();
+    });
 
     connect(main_window->getUI()->add_task, &QPushButton::clicked, this, &ControllerToDo::addNewTask);
 
@@ -72,11 +78,3 @@ void ControllerToDo::completeTask() {
     }
 }
 
-QString ControllerToDo::setCrossOutTask(ToDoItem item) const {
-    if (item.isComplete()) {
-        auto *font = new QFont;
-        font->setBold(true);
-        font->setStrikeOut(true);
-        return font->toString();
-    } else return "";
-}

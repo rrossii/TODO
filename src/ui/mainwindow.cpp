@@ -15,6 +15,11 @@ mainwindow::mainwindow(QWidget *parent) :
     file->addAction(quit);
     file->addAction(new_file);
 
+    QMenu *about;
+    about_program = new QAction("&About program", this);
+    about = menuBar()->addMenu("&Info");
+    about->addAction(about_program);
+
 }
 
 mainwindow::~mainwindow() {
@@ -31,4 +36,8 @@ QAction *mainwindow::getQuitAction() {
 
 QAction *mainwindow::getNewFileAction() {
     return new_file;
+}
+
+QAction *mainwindow::getAboutAction() {
+    return about_program;
 }
