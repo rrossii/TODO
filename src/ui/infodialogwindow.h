@@ -6,7 +6,6 @@
 #include "ui_infodialogwindow.h"
 
 
-
 class infodialogwindow : public QDialog {
 Q_OBJECT
 

@@ -13,8 +13,6 @@ public:
 private:
     QString taskName;
     bool done = false;
-
-
 };
 
 

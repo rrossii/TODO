@@ -13,7 +13,6 @@ class ControllerToDo : public QWindow {
     Q_OBJECT
 public:
     ControllerToDo();
-    QString setCrossOutTask(ToDoItem item) const;
 
 private:
     ToDoModel *model;
@@ -25,8 +24,6 @@ private slots:
     void onModelUpdated();
     void closeWindow();
     void completeTask();
-    signals:
-    void taskHasCompleted(QListWidgetItem *task_item);
 };
 
 #endif //TODOLISTPROBE_CONTROLLERTODO_H
